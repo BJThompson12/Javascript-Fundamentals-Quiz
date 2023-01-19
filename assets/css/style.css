@@ -1,0 +1,31 @@
+* {
+  outline: 1px solid red;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#instructions {
+  display: flex;
+  justify-content: center;
+  margin: 0 20%;
+}
+
+p {
+  text-align: center;
+}
+
+#start-button {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
