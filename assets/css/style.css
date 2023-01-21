@@ -29,3 +29,17 @@ p {
   justify-content: center;
   margin: 20px 0;
 }
+
+#answer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.button {
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}

@@ -20,3 +20,13 @@ function startTimer() {
     }
   }, 1000);
 }
+
+let startButton = document.getElementById("start-button")
+
+startButton.addEventListener("click",startQuiz)
+
+let preQuizElement = document.getElementById("pre-quiz")
+
+function startQuiz (){
+  preQuizElement.classList.add("hidden")
+}
