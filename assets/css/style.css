@@ -1,5 +1,12 @@
+:root {
+  --button-background: #560bad;
+  --accent-text-color: #f72585;
+  --answer-text-color: #adb5bd;
+}
+
 * {
   outline: 1px solid red;
+  box-sizing: border-box;
 }
 
 nav {
@@ -7,6 +14,10 @@ nav {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 10px;
+}
+nav a {
+  text-decoration: none;
+  color: var(--accent-text-color);
 }
 
 #title {
@@ -38,8 +49,10 @@ p {
 
 .button {
   margin: auto;
+  background: var(--button-background);
+  color: white;
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
