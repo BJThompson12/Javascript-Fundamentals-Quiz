@@ -3,12 +3,12 @@ const questionBank = [
    question: 'Commonly used data types DO Not include:',
    choice: ['strings', 'booleans', 'alerts', 'numbers'],
    answer: 'alerts'
-  },
-  {
+ },
+ {
    question: 'The condition in an if/else statement is enclosed with ________.',
    choice: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
    answer: 'parenthesis'
-   },
+ },
    {
     question: 'Arrays in Javascript can be used to store',
     choice: ['numbers and stings', 'other arrays', 'booleans', 'all the above'],
@@ -17,6 +17,8 @@ const questionBank = [
    {
     question: 'String values must be enclosed within ______ when being assigned to variables',
    choice: ['commas','curly brackets', 'quotes', 'parenthesis'],
+   choice1:
+   choice2:
    answer: 'quotes'
    },
    {
@@ -56,7 +58,7 @@ const questionBankLength = questionBank.length;
 const questionText = document.getElementById('question-text');
 const questionButton = document.getElementById('question-button');
 const answerResponse = document.getElementById('answer-response')
-
+let index
 // define start button in HTML
 let startButton = document.getElementById("start-button")
 // defin the question component in HTML
@@ -66,50 +68,57 @@ let preQuizElement = document.getElementById('pre-quiz')
 // add the listener to start quiz button to start function
 startButton.addEventListener('click',startQuiz)
 
-
-document.getElementByID('question-text') = h1;
 function startQuiz (){
   preQuizElement.classList.add('hidden');
   questionComponent.classList.remove('hidden');
-  
-  h1.innerText = questionBank.question[0],
-  question.textContent += "Commonly used data types do not include";
-  
+  showQuestion()
+  buildHtml()
+  // h1.innerText = questionBank.question[0],
+  // question.textContent += "Commonly used data types do not include";
+}
 //   let text = "<ul>";
 // for (let i = 0; i < questionBankLength; i++) {
 //   text += "<li>" + fruits[i] + "</li>";
 // }
 // text += "</ul>";
-
-document.getElementById("demo").innerHTML = text;
-  
-  answerList.forEach((array) => {
-    let li = document.createElement('li');
-    li.innerText = array;
-    possibleAnswers.appendChild(li);
-  });
-  
-  setTimeout(wait, 3000)
-
+index=null
+const testArray =[ {
+  question: 'test123',
+  choice: ['abc', 'defg']
+},
+{
+  question: 'test123',
+  choice: ['abc', 'defg']
 }
-
-let question = document.getElementById('question-text')
-let possibleAnswers = document.getElementById('answer-list')
-
-
-
-function wait(){
-  document.getElementById('answer-list').innerHTML = '';
-
-  answerList2.forEach((array) => {
-    let li = document.createElement('li');
-    li.innerText = array;
-    possibleAnswers.appendChild(li);
-  });
+]
+function correctAnswerChosen(){
+  //tercisry operartor
+  index = index ? index+=1 : 0
+  buildHtml(testArray[index])
 }
-
-// let buttonChange = document.append('button')
-
+function buildHtml (data){
+  console.log(data)
+  innerHtml = 
+  `<div id="question-component" class="hidden">
+      <div>
+        <h1 id="question-text">${data.question}</h1>
+      </div>
+      <div id="question-buttons"> 
+        <button class="button">${data.choice1}</button>
+        <button class="button"></button>
+        <button class="button"></button>
+        <button class="button"></button>
+      </div>
+      <div id="answer-response"></div>
+    </div>
+  `
+  
+}
+function showQuestion () {
+  console.log(testArray[0].choice)
+  questionText.innerText = testArray.choice;
+  questionButtons.innerText = testArray.choice;
+}
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 function startTimer() {
