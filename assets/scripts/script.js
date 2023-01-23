@@ -98,33 +98,31 @@ const choice1Button = document.getElementById('choice-1');
 const choice2Button = document.getElementById('choice-2');
 const choice3Button = document.getElementById('choice-3');
 const choice4Button = document.getElementById('choice-4');
-let index;
+const quizElement = document.getElementById('quiz')
+
+
 // define start button in HTML
 let startButton = document.getElementById('start-button');
-// defin the question component in HTML
+// define the question component in HTML
 let questionComponent = document.getElementById('question-component');
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
+
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
-console.log()
 
-
-// if (choice1Button) {
-//   // Not called
-//   choice1Button.addEventListener('click', chooseAnswer) 
-  //   alert('You clicked the button');
-  // };
-
-// choice2Button.addEventListener('click', chooseAnswer);
-// choice3Button.addEventListener('click', chooseAnswer);
-// choice4Button.addEventListener('click', chooseAnswer);
-
+// button event listeners
+choice1Button.addEventListener('click', chooseAnswer);
+choice2Button.addEventListener('click', chooseAnswer);
+choice3Button.addEventListener('click', chooseAnswer);
+choice4Button.addEventListener('click', chooseAnswer);
 
 function startQuiz() {
   preQuizElement.classList.add('hide');
+  quizElement.classList.remove('hide');
+  buildHtml(questionBank[index]);
   // questionComponent.classList.remove('hidden');
-  chooseAnswer();
+ 
 
 }
 //   let text = "<ul>";
@@ -132,12 +130,18 @@ function startQuiz() {
 //   text += "<li>" + fruits[i] + "</li>";
 // }
 // text += "</ul>";
-index = null;
+index = 0;
 
 function chooseAnswer() {
+  index ++;
+  if (index === 10){
+    quizElement.classList.add('hide');
+    return
+  }
   //tercisry operartor
-  index = index ? (index += 1) : 0;
+  // index = index ? (index += 1) : 0;
   buildHtml(questionBank[index]);
+  
 }
 
 // create the template variable
@@ -146,7 +150,12 @@ let template = document.getElementById('quiz');
 function buildHtml(data) {
 // check the selected data
   console.log(data);
-  
+  questionText.innerHTML = data.question;
+  choice1Button.innerHTML = data.choice1;
+  choice2Button.innerHTML = data.choice2;
+  choice3Button.innerHTML = data.choice3;
+  choice4Button.innerHTML = data.choice4;
+}
 //   // create the html template and inject the needed data
 //   document.getElementById('quiz').innerHTML = template
 //   // insert the html into the DOM
@@ -163,43 +172,38 @@ function buildHtml(data) {
 //       </div>
 //       <div id="answer-response"></div>
 //     </div>
-//   `;
-  parentDiv = document.createElement('div');
-  h1Div = document.createElement('div');
-  h1El = document.createElement('h1');
-  h1El.innerHTML = data.question;
-  // combine the tree structure
-  h1Div.innerHTML = h1El;
-  parentDiv.innerHTML = h1Div;
-  // structure for button div
-  buttonDiv = document.createElement('div');
-  buttonEl1 = document.createElement('button');
-  buttonEl1.addEventListener('click', chooseAnswer);
-  buttonEl1.innerHTML = data.choice1;
-  buttonEl2 = document.createElement('button');
-  buttonEl1.addEventListener('click', chooseAnswer);
-  buttonEl2.innerHTML = data.choice2;
-  buttonEl3 = document.createElement('button');
-  buttonEl1.addEventListener('click', chooseAnswer);
-  buttonEl3.innerHTML = data.choice3;
-  buttonEl4 = document.createElement('button');
-  buttonEl1.addEventListener('click', chooseAnswer);
-  buttonEl4.innerHTML = data.choice4;
-// structure button div under parent Div
-  buttonDiv.innerHTML += buttonEl1;
-  buttonDiv.innerHTML += buttonEl2; 
-  buttonDiv.innerHTML += buttonEl3; 
-  buttonDiv.innerHTML += buttonEl4; 
-//structure button parent div into the section parent div
-  parentDiv.innerHTML += buttonDiv;
+// //   `;
+//   parentDiv = document.createElement('div');
+//   h1Div = document.createElement('div');
+//   h1El = document.createElement('h1');
+//   h1El.innerHTML = data.question;
+//   // combine the tree structure
+//   h1Div.innerHTML = h1El;
+//   parentDiv.innerHTML = h1Div;
+//   // structure for button div
+//   buttonDiv = document.createElement('div');
+//   buttonEl1 = document.createElement('button');
+//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl1.innerHTML = data.choice1;
+//   buttonEl2 = document.createElement('button');
+//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl2.innerHTML = data.choice2;
+//   buttonEl3 = document.createElement('button');
+//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl3.innerHTML = data.choice3;
+//   buttonEl4 = document.createElement('button');
+//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl4.innerHTML = data.choice4;
+// // structure button div under parent Div
+//   buttonDiv.innerHTML += buttonEl1;
+//   buttonDiv.innerHTML += buttonEl2; 
+//   buttonDiv.innerHTML += buttonEl3; 
+//   buttonDiv.innerHTML += buttonEl4; 
+// //structure button parent div into the section parent div
+//   parentDiv.innerHTML += buttonDiv;
 
   // choice1Button.addEventListener('click', chooseAnswer);
-}
-function showQuestion() {
-  console.log(testArray[0].choice);
-  questionText.innerText = testArray.choice;
-  questionButtons.innerText = testArray.choice;
-}
+
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 function startTimer() {

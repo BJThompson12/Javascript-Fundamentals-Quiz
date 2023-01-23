@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,41 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <title>Document</title>
 </head>
+
 <body>
   <nav id="nav-bar">
     <a class="accent-text" href="">View High Score</a>
     <div id="countdown">Time: </div>
   </nav>
- <!-- pre-quiz-->
+  <!-- pre-quiz-->
   <section id="pre-quiz">
-    <div id="title" >
+    <div id="title">
       <h1>Coding Quiz Challenge</h1>
     </div>
-    <div id="instructions" >
-      <p>Try to answer the following code-related questions withing the time limit. Keep in mind that the incorrect answers will penalise your score/time by 10 seconds!</p>
+    <div id="instructions">
+      <p>Try to answer the following code-related questions withing the time limit. Keep in mind that the incorrect
+        answers will penalise your score/time by 10 seconds!</p>
     </div>
     <div id="start-button">
       <button class="button">Start Quiz</button>
     </div>
   </section>
-   <!-- Quiz with questions -->
-  <section id='quiz'>
+  <!-- Quiz with questions -->
+  <section id='quiz' class="hide">
+    <div id="question-component">
+      <div>
+        <h1 id="question-text"></h1>
+      </div>
+      <div id="question-buttons">
+        <button id='choice-1' class='button'></button>
+        <button id='choice-2' class='button'></button>
+        <button id='choice-3' class='button'></button>
+        <button id='choice-4' class='button'></button>
+      </div>
+      <div id="answer-response"></div>
+    </div>
   </section>
   <script src="assets/scripts/script.js"></script>
 </body>
+
 </html>
