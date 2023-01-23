@@ -19,40 +19,44 @@ nav a {
   text-decoration: none;
   color: var(--accent-text-color);
 }
-
-#title {
+#pre-quiz,
+#quiz {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content:center;
+  margin: 0 20%;
 }
+
 #instructions {
   display: flex;
   justify-content: center;
-  margin: 0 20%;
+  margin: 0 10%;
 }
 
 p {
   text-align: center;
 }
 
-#start-button {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+h1 {
+  padding: 10px 20px;
 }
 
 #answer-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
+} 
 
 .button {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
   background: var(--button-background);
   color: white;
 }
 
-.hidden {
-  display: none;
+.hide {
+  display: none !important;
 }
+
