@@ -115,9 +115,9 @@ startButton.addEventListener('click', startQuiz);
 
 // button event listeners with a method to track the selection information
 choice1Button.addEventListener('click', (event) => choiceClicked(event));
-choice2Button.addEventListener('click', choiceClicked);
-choice3Button.addEventListener('click', choiceClicked);
-choice4Button.addEventListener('click', choiceClicked);
+choice2Button.addEventListener('click', (event) => choiceClicked(event));
+choice3Button.addEventListener('click', (event) => choiceClicked(event));
+choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
 function startQuiz() {
   preQuizElement.classList.add('hide');
@@ -140,7 +140,7 @@ function choiceClicked(event) {
   console.log(event.target.innerText)
   console.log(event.target.innerHTML)
   //compare the text of the user choice to the correct answer
-  if (event.target.innerHTML === questionBank.answer[index]){
+  if (event.target.innerHTML == questionBank.answer){
     correctAnswerEl.classList.remove('hide');
     wrongAnswerEl.classList.add('hide');
   } else {
