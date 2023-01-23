@@ -107,7 +107,7 @@ let startButton = document.getElementById('start-button');
 let questionComponent = document.getElementById('question-component');
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
-
+let highScore = ''
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
