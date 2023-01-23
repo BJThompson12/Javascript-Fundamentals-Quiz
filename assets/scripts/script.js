@@ -1,54 +1,82 @@
 const questionBank = [
   {
    question: 'Commonly used data types DO Not include:',
-   choice: ['strings', 'booleans', 'alerts', 'numbers'],
+   choice1: 'strings',
+   choice2:'booleans', 
+   choice3: 'alerts',
+   choice4: 'numbers',
    answer: 'alerts'
  },
  {
    question: 'The condition in an if/else statement is enclosed with ________.',
-   choice: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-   answer: 'parenthesis'
+   choice1: 'quotes',
+   choice2: 'curly brackets',
+   choice3: 'parenthesis',
+   choice4: 'square brackets',
+    answer: 'parenthesis'
  },
    {
     question: 'Arrays in Javascript can be used to store',
-    choice: ['numbers and stings', 'other arrays', 'booleans', 'all the above'],
+    choice1: 'numbers and stings',
+    choice2: 'other arrays',
+    choice3: 'booleans',
+    choice4: 'all the above',
     answer: 'all the above'
    },
    {
     question: 'String values must be enclosed within ______ when being assigned to variables',
-   choice: ['commas','curly brackets', 'quotes', 'parenthesis'],
-   choice1:
-   choice2:
+   choice1: 'commas',
+   choice2: 'curly brackets',
+   choice3: 'quotes',
+   choice4: 'parenthesis',
    answer: 'quotes'
    },
    {
     question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-   choice: ['JavaScript','terminal.bash', 'for loops', 'console.log'],
+   choice1: 'JavaScript',
+   choice2: 'terminal.bash', 
+   choice3: 'for loops',
+   choice4: 'console.log',
    answer: 'console.log'
    },
    {
     question: 'JavaScript does NOT have this function built-in, which is commonly used to print or display data in other languages.',
-   choice: ['Display','Speak', 'Output', 'Show'],
+   choice1: 'Display',
+   choice2:'Speak', 
+   choice3: 'Output',
+   choice4: 'Show',
    answer: ''
    },
    {
     question: 'What is a JavaScript element that represents either TRUE or FALSE values?',
-   choice: ['Boolean','Condition', 'Event', 'RegExp'],
+   choice1: 'Boolean',  
+   choice2: 'Condition',
+   choice3: 'Event',
+   choice4: 'RegExp',
    answer: 'Boolean'
    },
    {
     question: 'What is the type of loop that continues through a block of code as long as the specified condition remains TRUE?',
-   choice: ['While Loop','Else Loop', 'Conditional Loop', 'For Loop'],
+   choice1: 'While Loop', 
+   choice2: 'Conditional Loop',
+   choice3: 'Else Loop',
+   choice4: 'For Loop',
    answer: 'While'
    },
    {
     question: 'What is the format called that is used for storing and transporting data?',
-   choice: ['Font','HTML', 'JSON', 'Syntax'],
-   answer: 'JSON'
+    choice1: 'Font',
+    choice2: 'HTML',
+    choice3: 'JSON', 
+    choice4: 'Syntax',
+    answer: 'JSON'
    },
    {
     question: 'In JavaScript, what is a block of code called that is used to perform a specific task?',
-   choice: ['Declaration','Function', 'String', 'Variable'],
+   choice1: 'Declaration', 
+   choice2: 'Function',
+   choice3: 'String',
+   choice4: 'Variable',
    answer: 'Function'
    }
 ]
