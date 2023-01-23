@@ -98,7 +98,9 @@ const choice1Button = document.getElementById('choice-1');
 const choice2Button = document.getElementById('choice-2');
 const choice3Button = document.getElementById('choice-3');
 const choice4Button = document.getElementById('choice-4');
-const quizElement = document.getElementById('quiz')
+const quizElement = document.getElementById('quiz');
+const correctAnswerEl = document.getElementById('correct-answer');
+const wrongAnswerEl = document.getElementById('wrong-answer');
 
 
 // define start button in HTML
@@ -111,11 +113,11 @@ let highScore = ''
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
-// button event listeners
-choice1Button.addEventListener('click', chooseAnswer);
-choice2Button.addEventListener('click', chooseAnswer);
-choice3Button.addEventListener('click', chooseAnswer);
-choice4Button.addEventListener('click', chooseAnswer);
+// button event listeners with a method to track the selection information
+choice1Button.addEventListener('click', (event) => choiceClicked(event));
+choice2Button.addEventListener('click', choiceClicked);
+choice3Button.addEventListener('click', choiceClicked);
+choice4Button.addEventListener('click', choiceClicked);
 
 function startQuiz() {
   preQuizElement.classList.add('hide');
@@ -123,7 +125,6 @@ function startQuiz() {
   buildHtml(questionBank[index]);
   // questionComponent.classList.remove('hidden');
  
-
 }
 //   let text = "<ul>";
 // for (let i = 0; i < questionBankLength; i++) {
@@ -132,7 +133,20 @@ function startQuiz() {
 // text += "</ul>";
 index = 0;
 
-function chooseAnswer() {
+function choiceClicked(event) {
+  // display the data from the event click
+  console.log(event)
+  // display the text of the button that was selected
+  console.log(event.target.innerText)
+  console.log(event.target.innerHTML)
+  //compare the text of the user choice to the correct answer
+  if (event.target.innerHTML === questionBank.answer[index]){
+    correctAnswerEl.classList.remove('hide');
+    wrongAnswerEl.classList.add('hide');
+  } else {
+    wrongAnswerEl.classList.remove('hide');
+    correctAnswerEl.classList.add('hide');
+  }
   index ++;
   if (index === 10){
     quizElement.classList.add('hide');
@@ -147,6 +161,7 @@ function chooseAnswer() {
 // create the template variable
 let template = document.getElementById('quiz');
 
+// adding text to empty elements
 function buildHtml(data) {
 // check the selected data
   console.log(data);
@@ -156,6 +171,11 @@ function buildHtml(data) {
   choice3Button.innerHTML = data.choice3;
   choice4Button.innerHTML = data.choice4;
 }
+
+// function checkForCorrectAnswer () {
+//   if (== questionBank.answer)
+// }
+// run a compare of the inner html to see if it matches the answer
 //   // create the html template and inject the needed data
 //   document.getElementById('quiz').innerHTML = template
 //   // insert the html into the DOM
@@ -183,16 +203,16 @@ function buildHtml(data) {
 //   // structure for button div
 //   buttonDiv = document.createElement('div');
 //   buttonEl1 = document.createElement('button');
-//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl1.addEventListener('click', choiceClicked);
 //   buttonEl1.innerHTML = data.choice1;
 //   buttonEl2 = document.createElement('button');
-//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl1.addEventListener('click', choiceClicked);
 //   buttonEl2.innerHTML = data.choice2;
 //   buttonEl3 = document.createElement('button');
-//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl1.addEventListener('click', choiceClicked);
 //   buttonEl3.innerHTML = data.choice3;
 //   buttonEl4 = document.createElement('button');
-//   buttonEl1.addEventListener('click', chooseAnswer);
+//   buttonEl1.addEventListener('click', choiceClicked);
 //   buttonEl4.innerHTML = data.choice4;
 // // structure button div under parent Div
 //   buttonDiv.innerHTML += buttonEl1;
@@ -202,7 +222,7 @@ function buildHtml(data) {
 // //structure button parent div into the section parent div
 //   parentDiv.innerHTML += buttonDiv;
 
-  // choice1Button.addEventListener('click', chooseAnswer);
+  // choice1Button.addEventListener('click', choiceClicked);
 
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
