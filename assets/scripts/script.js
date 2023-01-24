@@ -1,91 +1,91 @@
 const questionBank = [
   {
     question: 'Commonly used data types DO Not include:',
-    choice1: 'strings',
-    choice2: 'booleans',
-    choice3: 'alerts',
-    choice4: 'numbers',
-    answer: 'alerts',
+    choice1: '1. strings',
+    choice2: '2. booleans',
+    choice3: '3. alerts',
+    choice4: '4. numbers',
+    answer: '3. alerts',
   },
   {
     question:
       'The condition in an if/else statement is enclosed with ________.',
-    choice1: 'quotes',
-    choice2: 'curly brackets',
-    choice3: 'parenthesis',
-    choice4: 'square brackets',
-    answer: 'parenthesis',
+    choice1: '1. quotes',
+    choice2: '2. curly brackets',
+    choice3: '3. parenthesis',
+    choice4: '4. square brackets',
+    answer: '3. parenthesis',
   },
   {
     question: 'Arrays in Javascript can be used to store',
-    choice1: 'numbers and stings',
-    choice2: 'other arrays',
-    choice3: 'booleans',
-    choice4: 'all the above',
-    answer: 'all the above',
+    choice1: '1. numbers and stings',
+    choice2: '2. other arrays',
+    choice3: '3. booleans',
+    choice4: '4. all the above',
+    answer: '4. all the above',
   },
   {
     question:
       'String values must be enclosed within ______ when being assigned to variables',
-    choice1: 'commas',
-    choice2: 'curly brackets',
-    choice3: 'quotes',
-    choice4: 'parenthesis',
-    answer: 'quotes',
+    choice1: '1. commas',
+    choice2: '2. curly brackets',
+    choice3: '3. quotes',
+    choice4: '4. parenthesis',
+    answer: '3. quotes',
   },
   {
     question:
       'A very useful tool used during development and debugging for printing content to the debugger is:',
-    choice1: 'JavaScript',
-    choice2: 'terminal.bash',
-    choice3: 'for loops',
-    choice4: 'console.log',
-    answer: 'console.log',
+    choice1: '1. JavaScript',
+    choice2: '2. terminal.bash',
+    choice3: '3. for loops',
+    choice4: '4. console.log',
+    answer: '4. console.log',
   },
   {
     question:
-      'JavaScript does NOT have this function built-in, which is commonly used to print or display data in other languages.',
-    choice1: 'Display',
-    choice2: 'Speak',
-    choice3: 'Output',
-    choice4: 'Show',
-    answer: '',
+      'What does the DOM stand for?',
+    choice1: '1. Document Object Method',
+    choice2: '2. Do Or Move',
+    choice3: '3. Diagram Object Model',
+    choice4: '4. Document Object Model',
+    answer: '4. Document Object Model',
   },
   {
     question:
       'What is a JavaScript element that represents either TRUE or FALSE values?',
-    choice1: 'Boolean',
-    choice2: 'Condition',
-    choice3: 'Event',
-    choice4: 'RegExp',
-    answer: 'Boolean',
+    choice1: '1. Boolean',
+    choice2: '2. Condition',
+    choice3: '3. Event',
+    choice4: '4. RegExp',
+    answer: '1. Boolean',
   },
   {
     question:
       'What is the type of loop that continues through a block of code as long as the specified condition remains TRUE?',
-    choice1: 'While Loop',
-    choice2: 'Conditional Loop',
-    choice3: 'Else Loop',
-    choice4: 'For Loop',
-    answer: 'While',
+    choice1: '1. While Loop',
+    choice2: '2. Conditional Loop',
+    choice3: '3. Else Loop',
+    choice4: '4. For Loop',
+    answer: '1. While Loop',
   },
   {
     question:
       'What is the format called that is used for storing and transporting data?',
-    choice1: 'Font',
-    choice2: 'HTML',
-    choice3: 'JSON',
-    choice4: 'Syntax',
-    answer: 'JSON',
+    choice1: '1. Font',
+    choice2: '2. HTML',
+    choice3: '3. JSON',
+    choice4: '4. Syntax',
+    answer: '3. JSON',
   },
   {
     question:
       'In JavaScript, what is a block of code called that is used to perform a specific task?',
-    choice1: 'Declaration',
-    choice2: 'Function',
-    choice3: 'String',
-    choice4: 'Variable',
-    answer: 'Function',
+    choice1: '1. Declaration',
+    choice2: '2. Function',
+    choice3: '3. String',
+    choice4: '4. Variable',
+    answer: '2. Function',
   },
 ];
 let index = 0;
@@ -109,6 +109,8 @@ let questionComponent = document.getElementById('question-component');
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
 const submitButtonEl = document.getElementById('submit-button');
+const goBackButtonEl = document.getElementById('go-back-button');
+const clearHighScoreButtonEl = document.getElementById('clear-high-score-button');
 
 let highScore;
 let highScoreArray = [];
@@ -122,11 +124,18 @@ choice3Button.addEventListener('click', (event) => choiceClicked(event));
 choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
 // submitting initials by clicking subit
-submitButtonEl.addEventListener('click', (event) => showHighScores(event));
+// submitButtonEl.addEventListener('click', (event) => showHighScores(event));
 
+// document.onsubmit = showHighScores() {
+
+// }
 function showHighScores () {
-  finalScoreEl.classList.add('hide');
-  highScoreEl.classList.remove('hide');
+  alert('test');
+  // console.log(event.target.innerHTML)
+  // finalScoreEl.classList.add('hide');
+  // highScoreEl.classList.remove('hide');
+  startQuiz()
+
 }
 
 function startQuiz() {
@@ -184,7 +193,7 @@ function setTime () {
   // Sets interval in variable
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    timeEl.textContent = '0:' + secondsLeft;
+    timeEl.textContent = secondsLeft;
   
     if(secondsLeft === 0) {
       // Stops execution of action at set interval
@@ -196,13 +205,15 @@ function setTime () {
 }
 function testOver() {
   finalScoreEl.classList.remove('hide');
+  // correctAnswerEl.classList.add('hide');
+  // wrongAnswerEl.classList.add('hide');
   quizElement.classList.add('hide');
  
 }
 
-function enterInitials(){
-  submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
-}
+// function enterInitials(){
+//   submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
+// }
 
 // function checkForCorrectAnswer () {
 //   if (== questionBank.answer)
