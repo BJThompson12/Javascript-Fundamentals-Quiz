@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,78 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <nav id="nav-bar">
+    <a class="accent-text" href="">View High Score</a>
+    <div id="countdown">Time: <span id="clock"></span></div>
+  </nav>
+
+ 
+  <section id="main-container">
+   <!-- pre-quiz-->
+    <section id="pre-quiz" class="container">
+      <div id="title">
+        <h1>Coding Quiz Challenge</h1>
+      </div>
+      <div id="instructions">
+        <p>Try to answer the following code-related questions withing the time limit. Keep in mind that the incorrect
+        answers will penalise your score/time by 10 seconds!</p>
+      </div>
+      <div id="start-button">
+        <button class="button">Start Quiz</button>
+      </div>
+    </section>
+
+   <!-- Quiz with questions -->
+    <section class="container">
+      <div id="quiz" class="hide">
+        <h1 id="question-text"></h1>
+        <div id="question-buttons">
+          <button id="choice-1" class="button"></button>
+          <button id="choice-2" class="button"></button>
+          <button id="choice-3" class="button"></button>
+          <button id="choice-4" class="button"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- correct anser section -->
+    <section class="container">
+      <div id="correct-answer" class="hide">
+        <h2>Correct!</h2>
+      </div>
+    </section>
+
+    <!-- wrong answer section -->
+    <section class="container">
+      <div id='wrong-answer' class='hide'>
+        <h2>Wrong!</h2>
+      </div>
+    </section>
+
+    <!-- final score section -->
+    <section>
+      <div id="final-score" class="hide">
+        <h1>All done!</h1>
+        <span>Your Final score is </span>
+        <br>
+        Enter Initials: <input type="text">
+        <button id='submit-button'>Submit</button>
+      </div>
+    </section>
+
+    <!-- hish score section -->
+    <section>
+      <div id='high-scores' class="hide">
+        <h1>High scores</h1>
+        <div id="high-score-box"></div>
+        <button id="go-back-button">Go Back</button>
+        <button id="clear-high-score-button">Clear high scores</button>
+      </div>
+    </section>
+  </section>
+  <script src='assets/scripts/script.js'></script>
 </body>
+
 </html>

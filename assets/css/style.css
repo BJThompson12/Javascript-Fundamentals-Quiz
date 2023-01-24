@@ -1,0 +1,66 @@
+:root {
+  --button-background: #560bad;
+  --accent-text-color: #f72585;
+  --answer-text-color: #adb5bd;
+}
+
+* {
+  outline: 1px solid red;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+nav a {
+  text-decoration: none;
+  color: var(--accent-text-color);
+}
+#pre-quiz,
+#quiz {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:center;
+  margin: 0 20%;
+}
+
+#instructions {
+  display: flex;
+  justify-content: center;
+  margin: 0 10%;
+}
+
+p {
+  text-align: center;
+}
+
+h1 {
+  padding: 10px 20px;
+}
+
+#answer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+} 
+
+#countdown {
+  margin-right: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  background: var(--button-background);
+  color: white;
+}
+
+/* .hide {
+  display: none;
+} */
+
