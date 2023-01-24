@@ -126,10 +126,16 @@ choice4Button.addEventListener('click', (event) => choiceClicked(event));
 // submitting initials by clicking subit
 // submitButtonEl.addEventListener('click', (event) => showHighScores(event));
 
-function showHighScores (event) {
-  console.log(event.target.innerHTML)
-  finalScoreEl.classList.add('hide');
-  highScoreEl.classList.remove('hide');
+// document.onsubmit = showHighScores() {
+
+// }
+function showHighScores () {
+  alert('test');
+  // console.log(event.target.innerHTML)
+  // finalScoreEl.classList.add('hide');
+  // highScoreEl.classList.remove('hide');
+  startQuiz()
+
 }
 
 function startQuiz() {
@@ -199,15 +205,15 @@ function setTime () {
 }
 function testOver() {
   finalScoreEl.classList.remove('hide');
-  correctAnswerEl.classList.add('hide')
-  wrongAnswerEl.classList.add('hide')
+  // correctAnswerEl.classList.add('hide');
+  // wrongAnswerEl.classList.add('hide');
   quizElement.classList.add('hide');
  
 }
 
-function enterInitials(){
-  submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
-}
+// function enterInitials(){
+//   submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
+// }
 
 // function checkForCorrectAnswer () {
 //   if (== questionBank.answer)
