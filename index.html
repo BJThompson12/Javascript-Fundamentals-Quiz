@@ -13,7 +13,7 @@
 <body>
   <nav id="nav-bar">
     <a class="accent-text" href="">View High Score</a>
-    <div id="countdown">Time: </div>
+    <div id="countdown">Time: <span id="clock"></span></div>
   </nav>
   <!-- pre-quiz-->
   <section id="pre-quiz">
@@ -29,8 +29,8 @@
     </div>
   </section>
   <!-- Quiz with questions -->
-  <section id='quiz' class="hide">
-    <div id="question-component">
+  <section class="container">
+    <div id='quiz' class="hide">
       <div>
         <h1 id="question-text"></h1>
       </div>
@@ -40,21 +40,30 @@
         <button id='choice-3' class='button'></button>
         <button id='choice-4' class='button'></button>
       </div>
-      <div id="correct-answer" class="hide">
-        <h2>Correct!</h2>
-      </div>
-      <div id="wrong-answer" class="hide">
-        <h2>Wrong!</h2>
-      </div>
     </div>
-    <section id="final-score">
-      <div></div>
-    </section>
-    <section id='high-scores'>
+    <div id="correct-answer" class="hide">
+      <h2>Correct!</h2>
+    </div>
+    <div id='wrong-answer' class='hide'>
+      <h2>Wrong!</h2>
+    </div>
+    </div>
+    <div id="final-score" class="hide">
+      <h1>All done!</h1>
+      <span>Your Final score is </span>
+      <br>
+      Enter Initials: <input type="text">
+      <button id='submit-button'>Submit</button>
+    </div>
+    <div id='high-scores' class="hide">
+      <h1>High scores</h1>
+      <div id="high-score-box"></div>
+      <button></button>
+      <button></button>
 
-    </section>
+    </div>
   </section>
-  <script src="assets/scripts/script.js"></script>
+  <script src='assets/scripts/script.js'></script>
 </body>
 
 </html>

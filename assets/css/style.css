@@ -48,6 +48,10 @@ h1 {
   justify-content: flex-start;
 } 
 
+#countdown {
+  margin-right: 20px;
+}
+
 .button {
   display: flex;
   justify-content: center;

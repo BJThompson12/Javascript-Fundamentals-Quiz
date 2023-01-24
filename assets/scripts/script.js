@@ -88,8 +88,7 @@ const questionBank = [
     answer: 'Function',
   },
 ];
-const correctAnswer = 'Correct';
-const incorrectAnswer = 'Incorrect';
+let index = 0;
 const questionBankLength = questionBank.length;
 const questionText = document.getElementById('question-text');
 const questionButton = document.getElementById('question-button');
@@ -101,15 +100,18 @@ const choice4Button = document.getElementById('choice-4');
 const quizElement = document.getElementById('quiz');
 const correctAnswerEl = document.getElementById('correct-answer');
 const wrongAnswerEl = document.getElementById('wrong-answer');
-
-
+const finalScoreEl = document.getElementById('final-score');
+const highScoreEl = document.getElementById('high-scores');
 // define start button in HTML
 let startButton = document.getElementById('start-button');
 // define the question component in HTML
 let questionComponent = document.getElementById('question-component');
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
-let highScore = ''
+const submitButtonEl = document.getElementById('submit-button');
+
+let highScore;
+let highScoreArray = [];
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
@@ -119,57 +121,90 @@ choice2Button.addEventListener('click', (event) => choiceClicked(event));
 choice3Button.addEventListener('click', (event) => choiceClicked(event));
 choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
+// submitting initials by clicking subit
+submitButtonEl.addEventListener('click', (event) => showHighScores(event));
+
+function showHighScores () {
+  finalScoreEl.classList.add('hide');
+  highScoreEl.classList.remove('hide');
+}
+
 function startQuiz() {
+  highScore = 0;
+  setTime();
   preQuizElement.classList.add('hide');
   quizElement.classList.remove('hide');
-  buildHtml(questionBank[index]);
+  replaceInnerHTML(questionBank[index]);
   // questionComponent.classList.remove('hidden');
- 
 }
-//   let text = "<ul>";
-// for (let i = 0; i < questionBankLength; i++) {
-//   text += "<li>" + fruits[i] + "</li>";
-// }
-// text += "</ul>";
-index = 0;
 
 function choiceClicked(event) {
   // display the data from the event click
-  console.log(event)
+  console.log(event);
   // display the text of the button that was selected
-  console.log(event.target.innerText)
-  console.log(event.target.innerHTML)
+  console.log(event.target.innerHTML);
   //compare the text of the user choice to the correct answer
-  if (event.target.innerHTML == questionBank.answer){
+  if (event.target.innerHTML == questionBank[index].answer) {
     correctAnswerEl.classList.remove('hide');
     wrongAnswerEl.classList.add('hide');
   } else {
     wrongAnswerEl.classList.remove('hide');
     correctAnswerEl.classList.add('hide');
   }
-  index ++;
-  if (index === 10){
-    quizElement.classList.add('hide');
-    return
+  if (event.target.innerHTML == questionBank[index].answer){
+    highScore = (highScore + 10)
   }
-  //tercisry operartor
-  // index = index ? (index += 1) : 0;
-  buildHtml(questionBank[index]);
-  
+  // log the current score
+  console.log(highScore);
+  index++;
+  if (index == questionBankLength-1) {
+    testOver();
+    // quizElement.classList.add('hide');
+    // finalScoreEl.classList.remove('hide')
+    // return;
+  }
+
+  replaceInnerHTML(questionBank[index]);
 }
 
-// create the template variable
-let template = document.getElementById('quiz');
+// // create the template variable
+// let template = document.getElementById('quiz');
 
 // adding text to empty elements
-function buildHtml(data) {
-// check the selected data
+function replaceInnerHTML(data) {
+  // check the selected data
   console.log(data);
   questionText.innerHTML = data.question;
   choice1Button.innerHTML = data.choice1;
   choice2Button.innerHTML = data.choice2;
   choice3Button.innerHTML = data.choice3;
   choice4Button.innerHTML = data.choice4;
+}
+
+let timeEl = document.getElementById('clock')
+let secondsLeft = 75;
+function setTime () {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = '0:' + secondsLeft;
+  
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      testOver();  
+  }
+  }, 1000);
+
+}
+function testOver() {
+  finalScoreEl.classList.remove('hide');
+  quizElement.classList.add('hide');
+ 
+}
+
+function enterInitials(){
+  submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
 }
 
 // function checkForCorrectAnswer () {
@@ -181,10 +216,10 @@ function buildHtml(data) {
 //   // insert the html into the DOM
 //  template.innerHTML =
 //    `<div id="question-component">
-//       <div 
+//       <div
 //         <h1 id="question-text">${data.question}</h1>
 //       </div>
-//       <div id="question-buttons"> 
+//       <div id="question-buttons">
 //         <button id='choice-1' class='button'>${data.choice1}</button>
 //         <button id='choice-2' class='button'>${data.choice2}</button>
 //         <button id='choice-3' class='button'>${data.choice3}</button>
@@ -216,34 +251,9 @@ function buildHtml(data) {
 //   buttonEl4.innerHTML = data.choice4;
 // // structure button div under parent Div
 //   buttonDiv.innerHTML += buttonEl1;
-//   buttonDiv.innerHTML += buttonEl2; 
-//   buttonDiv.innerHTML += buttonEl3; 
-//   buttonDiv.innerHTML += buttonEl4; 
+//   buttonDiv.innerHTML += buttonEl2;
+//   buttonDiv.innerHTML += buttonEl3;
+//   buttonDiv.innerHTML += buttonEl4;
 // //structure button parent div into the section parent div
 //   parentDiv.innerHTML += buttonDiv;
 
-  // choice1Button.addEventListener('click', choiceClicked);
-
-
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-function startTimer() {
-  // Sets timer
-  timer = setInterval(function () {
-    timerCount--;
-    timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
-      // Tests if win condition is met
-      if (isWin && timerCount > 0) {
-        // Clears interval and stops timer
-        clearInterval(timer);
-        winGame();
-      }
-    }
-    // Tests if time has run out
-    if (timerCount === 0) {
-      // Clears interval
-      clearInterval(timer);
-      loseGame();
-    }
-  }, 1000);
-}
