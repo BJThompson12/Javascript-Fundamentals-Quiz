@@ -152,7 +152,7 @@ function choiceClicked(event) {
     correctAnswerEl.classList.add('hide');
   }
   if (event.target.innerHTML == questionBank[index].answer){
-    highScore = (highScore + 10)
+    highScore += 10 
   }
   // log the current score
   console.log(highScore);
