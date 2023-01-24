@@ -61,14 +61,15 @@
       </div>
     </section>
 
-    <!-- final score section -->
+    <!-- All done - final score section -->
     <section class="container">
       <div id="final-score" class="hide">
         <h2>All done!</h2>
-        <span>Your Final score is </span>
-        <br>
-        Enter Initials: <input type="text">
-        <button id="standard-button submit-button" class="button">Submit</button>
+        <p>Your Final score is </p>
+        <form onsubmit="myFunction()">
+          Enter initials: <input type="text" name="fname">
+          <input class="button" type="submit" value="Submit" >
+        </form>
       </div>
     </section>
 
@@ -76,9 +77,11 @@
     <section class="container">
       <div id='high-scores' class="hide">
         <h2>High scores</h2>
-        <div id="high-score-box"></div>
-        <button id="standard-button go-back-button" class="button">Go Back</button>
-        <button id="standard-button clear-high-score-button" class="button">Clear high scores</button>
+        <input type="text" id="high-score-input">
+        <div id="high-score-button-container">
+          <button id="standard-button go-back-button" class="button">Go Back</button>
+          <button id="standard-button clear-high-score-button" class="button">Clear high scores</button>
+        </div>
       </div>
     </section>
   </section>
