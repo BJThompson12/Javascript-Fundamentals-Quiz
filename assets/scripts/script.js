@@ -167,12 +167,9 @@ function choiceClicked(event) {
   replaceInnerHTML(questionBank[index]);
 }
 
-// // create the template variable
-// let template = document.getElementById('quiz');
-
 // adding text to empty elements
 function replaceInnerHTML(data) {
-  // check the selected data
+  // place data from the questionBank array into the html
   console.log(data);
   questionText.innerHTML = data.question;
   choice1Button.innerHTML = data.choice1;
