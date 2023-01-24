@@ -111,7 +111,7 @@ let preQuizElement = document.getElementById('pre-quiz');
 const submitButtonEl = document.getElementById('submit-button');
 const goBackButtonEl = document.getElementById('go-back-button');
 const clearHighScoreButtonEl = document.getElementById('clear-high-score-button');
-
+let timerInterval;
 let highScore;
 let highScoreArray = [];
 // add the listener to start quiz button to start function
@@ -129,13 +129,17 @@ choice4Button.addEventListener('click', (event) => choiceClicked(event));
 // document.onsubmit = showHighScores() {
 
 // }
-function showHighScores () {
-  alert('test');
-  // console.log(event.target.innerHTML)
-  // finalScoreEl.classList.add('hide');
-  // highScoreEl.classList.remove('hide');
-  startQuiz()
 
+var scoreSubmit = document.getElementById("submit-button");
+
+scoreSubmit.addEventListener("click", hiScorePage)
+
+function hiScorePage(event){
+  event.preventDefault();
+  console.log("hi")
+  preQuizElement.classList.add('hide');
+  finalScoreEl.classList.add('hide')
+  highScoreEl.classList.remove("hide")
 }
 
 function startQuiz() {
@@ -188,14 +192,14 @@ function replaceInnerHTML(data) {
 }
 
 let timeEl = document.getElementById('clock')
-let secondsLeft = 75;
+let secondsLeft = 3;
 function setTime () {
   // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
   
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       testOver();  
@@ -204,6 +208,7 @@ function setTime () {
 
 }
 function testOver() {
+  clearInterval(timerInterval)
   finalScoreEl.classList.remove('hide');
   // correctAnswerEl.classList.add('hide');
   // wrongAnswerEl.classList.add('hide');
