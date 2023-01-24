@@ -53,7 +53,7 @@
         <h2>All done!</h2>
         <p>Your Final score is </p>
         <form onsubmit="">
-          Enter initials: <input type="text" name="fname">
+          Enter initials: <input id="high-score-input" type="text" name="fname">
           <input id="submit-button" class="button" type="submit" value="Submit" >
         </form>
       </div>
@@ -76,7 +76,8 @@
     <section class="container">
       <div id="high-scores" class="hide">
         <h2>High scores</h2>
-        <input type="text" id="high-score-input">
+        <!-- <input type="text" id="high-score-input"> -->
+        <ol id="score-list"></ol>
         <div id="high-score-button-container">
           <button id="standard-button go-back-button" class="button">Go Back</button>
           <button id="standard-button clear-high-score-button" class="button">Clear high scores</button>

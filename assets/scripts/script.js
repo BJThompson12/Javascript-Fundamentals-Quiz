@@ -113,7 +113,7 @@ const goBackButtonEl = document.getElementById('go-back-button');
 const clearHighScoreButtonEl = document.getElementById('clear-high-score-button');
 let timerInterval;
 let highScore;
-let highScoreArray = [];
+// let highScoreArray = [];
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
@@ -123,6 +123,7 @@ choice2Button.addEventListener('click', (event) => choiceClicked(event));
 choice3Button.addEventListener('click', (event) => choiceClicked(event));
 choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
+
 // submitting initials by clicking subit
 // submitButtonEl.addEventListener('click', (event) => showHighScores(event));
 
@@ -130,16 +131,54 @@ choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
 // }
 
-var scoreSubmit = document.getElementById("submit-button");
+let scoreSubmit = document.getElementById("submit-button");
 
 scoreSubmit.addEventListener("click", hiScorePage)
+var olEl = document.getElementById('score-list');
 
 function hiScorePage(event){
   event.preventDefault();
   console.log("hi")
+  // must take in and identify the user input data
+  var initialsEl = document.getElementById('high-score-input').value.trim()
+  if (initialsEl !== ''){
+    var highScoreArray = JSON.parse(window.localStorage.getItem('highScores')) || [];
+    
+    let newScore = {
+      score: highScore, 
+      initials: initialsEl,
+    }
+    
+    
+    
+    // add the score to the array
+    highScoreArray.push(newScore)
+    // when sending to local systme must stringify and then set it
+    window.localStorage.setItem('highScores', JSON.stringify(highScoreArray))
+    
+  }
+  
   preQuizElement.classList.add('hide');
   finalScoreEl.classList.add('hide')
   highScoreEl.classList.remove("hide")
+  displayScore()
+}
+
+function displayScore(){
+  var highScoreArray = JSON.parse(window.localStorage.getItem('highScores')) || [];
+  
+  //when you get the local storage its an array describe value you want to return
+  highScoreArray.sort((a,b) =>{
+  return b.score - a.score
+  })
+  
+  for (let i = 0; i < highScoreArray.length; i++) {
+    // const element = array[i];
+    var liTag = document.createElement('li')
+    liTag.textContent = highScoreArray[i].initials + ' - ' +
+    highScoreArray[i].score;
+    olEl.appendChild(liTag)
+  }
 }
 
 function startQuiz() {
