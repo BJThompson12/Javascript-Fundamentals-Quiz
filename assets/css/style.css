@@ -5,10 +5,10 @@
   --accent-text-color: #B10DC9;
 }
 
-* {
+/* * {
   outline: 1px solid red;
   box-sizing: border-box;
-}
+} */
 
 nav {
   display: flex;
@@ -121,6 +121,6 @@ h3 {
 #high-scores input {
   width: 100%;
 }
-/* .hide {
-  display: none;
-} */
+.hide {
+  display: none !important;
+}
