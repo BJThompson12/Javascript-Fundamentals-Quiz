@@ -36,11 +36,13 @@
     <section class="container">
       <div id="quiz" class="hide">
         <h1 id="question-text"></h1>
-        <div id="question-buttons">
-          <button id="choice-1" class="button"></button>
-          <button id="choice-2" class="button"></button>
-          <button id="choice-3" class="button"></button>
-          <button id="choice-4" class="button"></button>
+        <div id="question-buttons-container">
+          <div id="question-buttons">
+            <button id="choice-1" class="button"></button>
+            <button id="choice-2" class="button"></button>
+            <button id="choice-3" class="button"></button>
+            <button id="choice-4" class="button"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -60,23 +62,23 @@
     </section>
 
     <!-- final score section -->
-    <section>
+    <section class="container">
       <div id="final-score" class="hide">
         <h1>All done!</h1>
         <span>Your Final score is </span>
         <br>
         Enter Initials: <input type="text">
-        <button id='submit-button'>Submit</button>
+        <button id="submit-button" class="button">Submit</button>
       </div>
     </section>
 
-    <!-- hish score section -->
-    <section>
+    <!-- high score section -->
+    <section class="container">
       <div id='high-scores' class="hide">
         <h1>High scores</h1>
         <div id="high-score-box"></div>
-        <button id="go-back-button">Go Back</button>
-        <button id="clear-high-score-button">Clear high scores</button>
+        <button id="go-back-button" class="button">Go Back</button>
+        <button id="clear-high-score-button" class="button">Clear high scores</button>
       </div>
     </section>
   </section>
