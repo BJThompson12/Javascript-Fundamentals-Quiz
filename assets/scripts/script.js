@@ -111,17 +111,22 @@ let preQuizElement = document.getElementById('pre-quiz');
 const submitButtonEl = document.getElementById('submit-button');
 const goBackButtonEl = document.getElementById('go-back-button');
 const clearHighScoreButtonEl = document.getElementById('clear-high-score-button');
+const navEl = document.getElementById('nav-score')
 let timerInterval;
 let highScore;
 // let highScoreArray = [];
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
+// listener for view high score
+navEl.addEventListener('click', hiScorePage)
 // button event listeners with a method to track the selection information
 choice1Button.addEventListener('click', (event) => choiceClicked(event));
 choice2Button.addEventListener('click', (event) => choiceClicked(event));
 choice3Button.addEventListener('click', (event) => choiceClicked(event));
 choice4Button.addEventListener('click', (event) => choiceClicked(event));
+
+//event listener for view high score
 
 
 // submitting initials by clicking subit
@@ -148,8 +153,6 @@ function hiScorePage(event){
       score: highScore, 
       initials: initialsEl,
     }
-    
-    
     
     // add the score to the array
     highScoreArray.push(newScore)
@@ -211,9 +214,6 @@ function choiceClicked(event) {
   index++;
   if (index == questionBankLength-1) {
     testOver();
-    // quizElement.classList.add('hide');
-    // finalScoreEl.classList.remove('hide')
-    // return;
   }
 
   replaceInnerHTML(questionBank[index]);
@@ -231,7 +231,7 @@ function replaceInnerHTML(data) {
 }
 
 let timeEl = document.getElementById('clock')
-let secondsLeft = 3;
+let secondsLeft = 75;
 function setTime () {
   // Sets interval in variable
   timerInterval = setInterval(function() {
