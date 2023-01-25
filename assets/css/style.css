@@ -52,19 +52,12 @@ h3 {
 }
 
 .button:hover {
-  background-color: var(--hover-text-color);
-  cursor: pointer;
+  background-color: var(--button-background);
+  
 }
 
 .button:active {
   background-color: var(--accent-text-color);
-}
-
-#choice-1:hover,
-#choice-2:hover,
-#choice-3:hover,
-#choice-4:hover {
- border: var(--button-background);
 }
 
 #countdown {
@@ -145,7 +138,9 @@ ol {
 
 /* remove hover state from mobile */
 @media(hover: hover) {
+  /* when hover is supported */
   .button:hover {
       background-color: var(--hover-text-color);
+      cursor: pointer;
   }
 }
