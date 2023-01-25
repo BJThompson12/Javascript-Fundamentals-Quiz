@@ -38,7 +38,8 @@ h3 {
   margin: 0 20%;
 }
 
-.button {
+.button,
+.button:before {
   border-radius: 5px;
   background: var(--button-background);
   color: white;
@@ -53,6 +54,10 @@ h3 {
 .button:hover {
   background-color: var(--hover-text-color);
   cursor: pointer;
+}
+
+.button:active {
+  background-color: var(--accent-text-color);
 }
 
 #countdown {
