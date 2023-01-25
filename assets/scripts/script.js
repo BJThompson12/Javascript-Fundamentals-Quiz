@@ -86,6 +86,14 @@ const questionBank = [
     choice4: '4. Variable',
     answer: '2. Function',
   },
+  {
+   question: 'Don\'t you think this quiz is pretty awesome 😎',
+   choice1: '1. it\'s ok',
+   choice2: '2. kind of',
+   choice3: '3. I guess so',
+   choice4: '4. Say yes and take your 10 points 🫠',
+   answer: '4. Say yes and take your 10 points 🫠',
+  },
 ];
 let index = 0;
 const questionBankLength = questionBank.length;
@@ -218,7 +226,7 @@ function choiceClicked(event) {
     // log the current score
     console.log(highScore);
   index++;
-  if (index == questionBankLength - 1) {
+  if (index == questionBankLength) {
     testOver();
   }
 
@@ -237,7 +245,7 @@ function replaceInnerHTML(data) {
 }
 
 let timeEl = document.getElementById('clock');
-let secondsLeft = 75;
+let secondsLeft = 90;
 function setTime() {
   // Sets interval in variable
   timerInterval = setInterval(function () {
