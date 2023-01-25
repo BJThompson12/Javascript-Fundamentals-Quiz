@@ -43,8 +43,7 @@ const questionBank = [
     answer: '4. console.log',
   },
   {
-    question:
-      'What does the DOM stand for?',
+    question: 'What does the DOM stand for?',
     choice1: '1. Document Object Method',
     choice2: '2. Do Or Move',
     choice3: '3. Diagram Object Model',
@@ -109,78 +108,74 @@ let questionComponent = document.getElementById('question-component');
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
 const submitButtonEl = document.getElementById('submit-button');
-const goBackButtonEl = document.getElementById('go-back-button');
-const clearHighScoreButtonEl = document.getElementById('clear-high-score-button');
-const navEl = document.getElementById('nav-score')
+const navEl = document.getElementById('nav-score');
 let timerInterval;
 let highScore;
-// let highScoreArray = [];
+
+
+const goBackEl = document.getElementById('go-back')
+goBackEl.addEventListener('click', returnToQuiz)
+
+const clearHighScoreEl = document.getElementById('clear-high-score-button');
+clearHighScoreEl.addEventListener('click', hiScorePage)
+
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
 
 // listener for view high score
-navEl.addEventListener('click', hiScorePage)
+navEl.addEventListener('click', hiScorePage);
 // button event listeners with a method to track the selection information
 choice1Button.addEventListener('click', (event) => choiceClicked(event));
 choice2Button.addEventListener('click', (event) => choiceClicked(event));
 choice3Button.addEventListener('click', (event) => choiceClicked(event));
 choice4Button.addEventListener('click', (event) => choiceClicked(event));
 
-//event listener for view high score
+let scoreSubmit = document.getElementById('submit-button');
 
-
-// submitting initials by clicking subit
-// submitButtonEl.addEventListener('click', (event) => showHighScores(event));
-
-// document.onsubmit = showHighScores() {
-
-// }
-
-let scoreSubmit = document.getElementById("submit-button");
-
-scoreSubmit.addEventListener("click", hiScorePage)
+scoreSubmit.addEventListener('click', hiScorePage);
 var olEl = document.getElementById('score-list');
 
-function hiScorePage(event){
+function hiScorePage(event) {
   event.preventDefault();
-  console.log("hi")
+  console.log('hi');
   // must take in and identify the user input data
-  var initialsEl = document.getElementById('high-score-input').value.trim()
-  if (initialsEl !== ''){
-    var highScoreArray = JSON.parse(window.localStorage.getItem('highScores')) || [];
-    
+  var initialsEl = document.getElementById('high-score-input').value.trim();
+  if (initialsEl !== '') {
+    var highScoreArray =
+      JSON.parse(window.localStorage.getItem('highScores')) || [];
+
     let newScore = {
-      score: highScore, 
+      score: highScore,
       initials: initialsEl,
-    }
-    
+    };
+
     // add the score to the array
-    highScoreArray.push(newScore)
+    highScoreArray.push(newScore);
     // when sending to local systme must stringify and then set it
-    window.localStorage.setItem('highScores', JSON.stringify(highScoreArray))
-    
+    window.localStorage.setItem('highScores', JSON.stringify(highScoreArray));
   }
-  
+
   preQuizElement.classList.add('hide');
-  finalScoreEl.classList.add('hide')
-  highScoreEl.classList.remove("hide")
-  displayScore()
+  finalScoreEl.classList.add('hide');
+  highScoreEl.classList.remove('hide');
+  displayScore();
 }
 
-function displayScore(){
-  var highScoreArray = JSON.parse(window.localStorage.getItem('highScores')) || [];
-  
+function displayScore() {
+  var highScoreArray =
+    JSON.parse(window.localStorage.getItem('highScores')) || [];
+
   //when you get the local storage its an array describe value you want to return
-  highScoreArray.sort((a,b) =>{
-  return b.score - a.score
-  })
-  
+  highScoreArray.sort((a, b) => {
+    return b.score - a.score;
+  });
+
   for (let i = 0; i < highScoreArray.length; i++) {
     // const element = array[i];
-    var liTag = document.createElement('li')
-    liTag.textContent = highScoreArray[i].initials + ' - ' +
-    highScoreArray[i].score;
-    olEl.appendChild(liTag)
+    var liTag = document.createElement('li');
+    liTag.textContent =
+      highScoreArray[i].initials + ' - ' + highScoreArray[i].score;
+    olEl.appendChild(liTag);
   }
 }
 
@@ -202,18 +197,17 @@ function choiceClicked(event) {
   if (event.target.innerHTML == questionBank[index].answer) {
     correctAnswerEl.classList.remove('hide');
     wrongAnswerEl.classList.add('hide');
-    highScore += 10; 
+    highScore += 10;
   } else {
     wrongAnswerEl.classList.remove('hide');
     correctAnswerEl.classList.add('hide');
-    secondsLeft = (secondsLeft - 10);
+    secondsLeft = secondsLeft - 10;
   }
   if (event.target.innerHTML == questionBank[index].answer)
-  
-  // log the current score
-  console.log(highScore);
+    // log the current score
+    console.log(highScore);
   index++;
-  if (index == questionBankLength-1) {
+  if (index == questionBankLength - 1) {
     testOver();
   }
 
@@ -231,31 +225,34 @@ function replaceInnerHTML(data) {
   choice4Button.innerHTML = data.choice4;
 }
 
-let timeEl = document.getElementById('clock')
+let timeEl = document.getElementById('clock');
 let secondsLeft = 75;
-function setTime () {
+function setTime() {
   // Sets interval in variable
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
-  
-    if(secondsLeft <= 0) {
+
+    if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      testOver();  
-  }
+      testOver();
+    }
   }, 1000);
-
 }
+
 function testOver() {
-  clearInterval(timerInterval)
+  clearInterval(timerInterval);
   finalScoreEl.classList.remove('hide');
   // correctAnswerEl.classList.add('hide');
   // wrongAnswerEl.classList.add('hide');
   quizElement.classList.add('hide');
- 
 }
 
+function returnToQuiz (){
+  preQuizElement.classList.remove('hide');
+  highScoreEl.classList.add('hide');
+}
 // function enterInitials(){
 //   submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
 // }
@@ -309,4 +306,3 @@ function testOver() {
 //   buttonDiv.innerHTML += buttonEl4;
 // //structure button parent div into the section parent div
 //   parentDiv.innerHTML += buttonDiv;
-
