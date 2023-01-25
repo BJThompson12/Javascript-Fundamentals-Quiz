@@ -87,32 +87,29 @@ const questionBank = [
     answer: '2. Function',
   },
   {
-   question: 'Don\'t you think this quiz is pretty awesome 😎',
-   choice1: '1. it\'s ok',
-   choice2: '2. kind of',
-   choice3: '3. I guess so',
-   choice4: '4. Say yes and take your 10 points 🫠',
-   answer: '4. Say yes and take your 10 points 🫠',
+    question: "Don't you think this quiz is pretty awesome 😎",
+    choice1: "1. it's ok",
+    choice2: '2. kind of',
+    choice3: '3. I guess so',
+    choice4: '4. Say yes and take your 10 points 🫠',
+    answer: '4. Say yes and take your 10 points 🫠',
   },
 ];
 let index = 0;
 const questionBankLength = questionBank.length;
 const questionText = document.getElementById('question-text');
-const questionButton = document.getElementById('question-button');
-const answerResponse = document.getElementById('answer-response');
 const choice1Button = document.getElementById('choice-1');
 const choice2Button = document.getElementById('choice-2');
 const choice3Button = document.getElementById('choice-3');
 const choice4Button = document.getElementById('choice-4');
-const quizElement = document.getElementById('quiz');
+const quizEl = document.getElementById('quiz');
 const correctAnswerEl = document.getElementById('correct-answer');
 const wrongAnswerEl = document.getElementById('wrong-answer');
 const finalScoreEl = document.getElementById('final-score');
 const highScoreEl = document.getElementById('high-scores');
 // define start button in HTML
-let startButton = document.getElementById('start-button');
-// define the question component in HTML
-let questionComponent = document.getElementById('question-component');
+const startButton = document.getElementById('start-button');
+
 // define Element with the questions
 let preQuizElement = document.getElementById('pre-quiz');
 const submitButtonEl = document.getElementById('submit-button');
@@ -149,11 +146,11 @@ var olEl = document.getElementById('score-list');
 
 function clearStorage() {
   localStorage.clear();
+  reloadQuiz();
 }
 
 function hiScorePage(event) {
   event.preventDefault();
-  console.log('hi');
   // must take in and identify the user input data
   var initialsEl = document.getElementById('high-score-input').value.trim();
   if (initialsEl !== '') {
@@ -174,6 +171,7 @@ function hiScorePage(event) {
   preQuizElement.classList.add('hide');
   finalScoreEl.classList.add('hide');
   highScoreEl.classList.remove('hide');
+  quizEl.classList.add('hide');
 
   displayScore();
 }
@@ -202,7 +200,7 @@ function startQuiz() {
   highScore = 0;
   setTime();
   preQuizElement.classList.add('hide');
-  quizElement.classList.remove('hide');
+  quizEl.classList.remove('hide');
   replaceInnerHTML(questionBank[index]);
   // questionComponent.classList.remove('hidden');
 }
@@ -229,7 +227,6 @@ function choiceClicked(event) {
   if (index == questionBankLength) {
     testOver();
   }
-
   replaceInnerHTML(questionBank[index]);
 }
 
@@ -264,63 +261,10 @@ function testOver() {
   clearInterval(timerInterval);
   scoreEl.textContent = highScore;
   finalScoreEl.classList.remove('hide');
-  quizElement.classList.add('hide');
+  quizEl.classList.add('hide');
 }
 
 function returnToQuiz() {
   preQuizElement.classList.remove('hide');
   highScoreEl.classList.add('hide');
 }
-// function enterInitials(){
-//   submitButtonEl.addEventListener('click', (event) => choiceClicked(event));
-// }
-
-// function checkForCorrectAnswer () {
-//   if (== questionBank.answer)
-// }
-// run a compare of the inner html to see if it matches the answer
-//   // create the html template and inject the needed data
-//   document.getElementById('quiz').innerHTML = template
-//   // insert the html into the DOM
-//  template.innerHTML =
-//    `<div id="question-component">
-//       <div
-//         <h1 id="question-text">${data.question}</h1>
-//       </div>
-//       <div id="question-buttons">
-//         <button id='choice-1' class='button'>${data.choice1}</button>
-//         <button id='choice-2' class='button'>${data.choice2}</button>
-//         <button id='choice-3' class='button'>${data.choice3}</button>
-//         <button id='choice-4' class='button'>${data.choice4}</button>
-//       </div>
-//       <div id="answer-response"></div>
-//     </div>
-// //   `;
-//   parentDiv = document.createElement('div');
-//   h1Div = document.createElement('div');
-//   h1El = document.createElement('h1');
-//   h1El.innerHTML = data.question;
-//   // combine the tree structure
-//   h1Div.innerHTML = h1El;
-//   parentDiv.innerHTML = h1Div;
-//   // structure for button div
-//   buttonDiv = document.createElement('div');
-//   buttonEl1 = document.createElement('button');
-//   buttonEl1.addEventListener('click', choiceClicked);
-//   buttonEl1.innerHTML = data.choice1;
-//   buttonEl2 = document.createElement('button');
-//   buttonEl1.addEventListener('click', choiceClicked);
-//   buttonEl2.innerHTML = data.choice2;
-//   buttonEl3 = document.createElement('button');
-//   buttonEl1.addEventListener('click', choiceClicked);
-//   buttonEl3.innerHTML = data.choice3;
-//   buttonEl4 = document.createElement('button');
-//   buttonEl1.addEventListener('click', choiceClicked);
-//   buttonEl4.innerHTML = data.choice4;
-// // structure button div under parent Div
-//   buttonDiv.innerHTML += buttonEl1;
-//   buttonDiv.innerHTML += buttonEl2;
-//   buttonDiv.innerHTML += buttonEl3;
-//   buttonDiv.innerHTML += buttonEl4;
-// //structure button parent div into the section parent div
-//   parentDiv.innerHTML += buttonDiv;
