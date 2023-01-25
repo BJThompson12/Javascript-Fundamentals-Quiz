@@ -138,7 +138,7 @@ ol {
 
 /* remove hover state from mobile */
 @media(hover: hover) {
-  #btn:hover {
+  .button:hover {
       background-color: var(--hover-text-color);
   }
 }
