@@ -52,7 +52,7 @@ h3 {
 }
 
 .button:hover {
-  background-color: var(--button-background); 
+  background-color: var(--button-background);
 }
 
 .button:active {
@@ -136,10 +136,10 @@ ol {
 }
 
 /* remove hover state from mobile */
-@media(hover: hover) {
+@media (hover: hover) {
   /* when hover is supported */
   .button:hover {
-      background-color: var(--hover-text-color);
-      cursor: pointer;
+    background-color: var(--hover-text-color);
+    cursor: pointer;
   }
 }
