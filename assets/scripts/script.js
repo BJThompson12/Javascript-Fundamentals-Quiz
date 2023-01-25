@@ -112,12 +112,16 @@ const navEl = document.getElementById('nav-score');
 let timerInterval;
 let highScore;
 
+let scoreEl = document.getElementById('high-score')
 
 const goBackEl = document.getElementById('go-back')
-goBackEl.addEventListener('click', returnToQuiz)
-
+goBackEl.addEventListener('click', reloadQuiz);
+// reload the quiz to retake
+function reloadQuiz (){
+  location.reload();
+}
 const clearHighScoreEl = document.getElementById('clear-high-score-button');
-clearHighScoreEl.addEventListener('click', hiScorePage)
+clearHighScoreEl.addEventListener('click', clearStorage)
 
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
@@ -135,6 +139,10 @@ let scoreSubmit = document.getElementById('submit-button');
 scoreSubmit.addEventListener('click', hiScorePage);
 var olEl = document.getElementById('score-list');
 
+function clearStorage(){
+  localStorage.clear();
+}
+
 function hiScorePage(event) {
   event.preventDefault();
   console.log('hi');
@@ -143,7 +151,7 @@ function hiScorePage(event) {
   if (initialsEl !== '') {
     var highScoreArray =
       JSON.parse(window.localStorage.getItem('highScores')) || [];
-
+      
     let newScore = {
       score: highScore,
       initials: initialsEl,
@@ -154,14 +162,17 @@ function hiScorePage(event) {
     // when sending to local systme must stringify and then set it
     window.localStorage.setItem('highScores', JSON.stringify(highScoreArray));
   }
-
+  
   preQuizElement.classList.add('hide');
   finalScoreEl.classList.add('hide');
   highScoreEl.classList.remove('hide');
+  
   displayScore();
 }
 
 function displayScore() {
+  correctAnswerEl.classList.add('hide');
+  wrongAnswerEl.classList.add('hide');
   var highScoreArray =
     JSON.parse(window.localStorage.getItem('highScores')) || [];
 
@@ -208,6 +219,7 @@ function choiceClicked(event) {
     console.log(highScore);
   index++;
   if (index == questionBankLength - 1) {
+    
     testOver();
   }
 
@@ -227,25 +239,25 @@ function replaceInnerHTML(data) {
 
 let timeEl = document.getElementById('clock');
 let secondsLeft = 75;
-function setTime() {
+function setTime () {
   // Sets interval in variable
-  timerInterval = setInterval(function () {
+  timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
-
-    if (secondsLeft <= 0) {
+  
+    if(secondsLeft <= 0) {
       // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      testOver();
-    }
+      
+      testOver();  
+  }
   }, 1000);
+
 }
 
 function testOver() {
   clearInterval(timerInterval);
+  scoreEl.textContent = highScore;
   finalScoreEl.classList.remove('hide');
-  // correctAnswerEl.classList.add('hide');
-  // wrongAnswerEl.classList.add('hide');
   quizElement.classList.add('hide');
 }
 
