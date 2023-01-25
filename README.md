@@ -23,7 +23,7 @@ N/A
 
 ## Deployment
 
-<a href="https://bjthompson12.github.io/Password_Generator/">Deployment Link</a>
+<a href="https://bjthompson12.github.io/Javascript-Fundamentals-Quiz/">Deployment Link</a>
 
 ## Credits
 
