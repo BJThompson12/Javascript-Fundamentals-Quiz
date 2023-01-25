@@ -86,6 +86,14 @@ const questionBank = [
     choice4: '4. Variable',
     answer: '2. Function',
   },
+  {
+   question: 'Don\'t you think this quiz is pretty awesome 😎',
+   choice1: '1. it\'s ok',
+   choice2: '2. kind of',
+   choice3: '3. I guess so',
+   choice4: '4. Say yes and take your 10 points 🫠',
+   answer: '4. Say yes and take your 10 points 🫠',
+  },
 ];
 let index = 0;
 const questionBankLength = questionBank.length;
@@ -112,16 +120,16 @@ const navEl = document.getElementById('nav-score');
 let timerInterval;
 let highScore;
 
-let scoreEl = document.getElementById('high-score')
+let scoreEl = document.getElementById('high-score');
 
-const goBackEl = document.getElementById('go-back')
+const goBackEl = document.getElementById('go-back');
 goBackEl.addEventListener('click', reloadQuiz);
 // reload the quiz to retake
-function reloadQuiz (){
+function reloadQuiz() {
   location.reload();
 }
 const clearHighScoreEl = document.getElementById('clear-high-score-button');
-clearHighScoreEl.addEventListener('click', clearStorage)
+clearHighScoreEl.addEventListener('click', clearStorage);
 
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
@@ -139,7 +147,7 @@ let scoreSubmit = document.getElementById('submit-button');
 scoreSubmit.addEventListener('click', hiScorePage);
 var olEl = document.getElementById('score-list');
 
-function clearStorage(){
+function clearStorage() {
   localStorage.clear();
 }
 
@@ -151,7 +159,7 @@ function hiScorePage(event) {
   if (initialsEl !== '') {
     var highScoreArray =
       JSON.parse(window.localStorage.getItem('highScores')) || [];
-      
+
     let newScore = {
       score: highScore,
       initials: initialsEl,
@@ -162,11 +170,11 @@ function hiScorePage(event) {
     // when sending to local systme must stringify and then set it
     window.localStorage.setItem('highScores', JSON.stringify(highScoreArray));
   }
-  
+
   preQuizElement.classList.add('hide');
   finalScoreEl.classList.add('hide');
   highScoreEl.classList.remove('hide');
-  
+
   displayScore();
 }
 
@@ -218,8 +226,7 @@ function choiceClicked(event) {
     // log the current score
     console.log(highScore);
   index++;
-  if (index == questionBankLength - 1) {
-    
+  if (index == questionBankLength) {
     testOver();
   }
 
@@ -238,20 +245,19 @@ function replaceInnerHTML(data) {
 }
 
 let timeEl = document.getElementById('clock');
-let secondsLeft = 75;
-function setTime () {
+let secondsLeft = 90;
+function setTime() {
   // Sets interval in variable
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
-  
-    if(secondsLeft <= 0) {
-      // Stops execution of action at set interval
-      
-      testOver();  
-  }
-  }, 1000);
 
+    if (secondsLeft <= 0) {
+      // Stops execution of action at set interval
+
+      testOver();
+    }
+  }, 1000);
 }
 
 function testOver() {
@@ -261,7 +267,7 @@ function testOver() {
   quizElement.classList.add('hide');
 }
 
-function returnToQuiz (){
+function returnToQuiz() {
   preQuizElement.classList.remove('hide');
   highScoreEl.classList.add('hide');
 }
