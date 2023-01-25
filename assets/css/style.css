@@ -60,6 +60,13 @@ h3 {
   background-color: var(--accent-text-color);
 }
 
+#choice-1:hover,
+#choice-2:hover,
+#choice-3:hover,
+#choice-4:hover {
+ border: var(--button-background);
+}
+
 #countdown {
   margin-right: 20px;
 }
