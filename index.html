@@ -12,27 +12,27 @@
 
 <body>
   <nav id="nav-bar">
-    <a class="accent-text" href="">View High Score</a>
+    <a id="nav-score"class="accent-text" href="">View High Score</a>
     <div id="countdown">Time: <span id="clock"></span></div>
   </nav>
 
- 
+
   <section id="main-container">
-   <!-- pre-quiz-->
+    <!-- pre-quiz-->
     <section id="pre-quiz" class="container">
       <div id="title">
         <h1>Coding Quiz Challenge</h1>
       </div>
       <div id="instructions">
         <p>Try to answer the following code-related questions withing the time limit. Keep in mind that the incorrect
-        answers will penalise your score/time by 10 seconds!</p>
+          answers will penalise your score/time by 10 seconds!</p>
       </div>
       <div id="start-button">
         <button id="standard-button" class="button">Start Quiz</button>
       </div>
     </section>
 
-   <!-- Quiz with questions -->
+    <!-- Quiz with questions -->
     <section class="container">
       <div id="quiz" class="hide">
         <h2 id="question-text"></h2>
@@ -49,16 +49,28 @@
 
     <!-- All done - final score section -->
     <section class="container">
-      <div id="final-score" class="hid">
+      <div id="final-score" class="hide">
         <h2>All done!</h2>
-        <p>Your Final score is </p>
-        <form onsubmit="showHighScores()">
-          Enter initials: <input type="text" name="fname">
-          <input id="submit-button" class="button" type="submit" value="Submit" >
+        <p>Your Final score is <span id="high-score"></span>.</p>
+        <form onsubmit="">
+          Enter initials: <input id="high-score-input" type="text" name="fname">
+          <input id="submit-button" class="button" type="submit" value="Submit">
         </form>
       </div>
     </section>
 
+    <!-- high score section -->
+    <section class="container">
+      <div id="high-scores" class="hide">
+        <h2>High scores</h2>
+        <ol id="score-list"></ol>
+        <div id="high-score-button-container" class="stand-button" >
+          
+          <button id="go-back" class="button">Go Back</button>
+          <button id="clear-high-score-button" class="button">Clear high scores</button>
+        </div>
+      </div>
+    </section>
     <!-- correct anser section -->
     <section class="container">
       <div id="correct-answer" class="hide">
@@ -70,17 +82,6 @@
     <section class="container">
       <div id="wrong-answer" class="hide">
         <h3>Wrong!</h3>
-      </div>
-    </section>
-    <!-- high score section -->
-    <section class="container">
-      <div id="high-scores" class="hide">
-        <h2>High scores</h2>
-        <input type="text" id="high-score-input">
-        <div id="high-score-button-container">
-          <button id="standard-button go-back-button" class="button">Go Back</button>
-          <button id="standard-button clear-high-score-button" class="button">Clear high scores</button>
-        </div>
       </div>
     </section>
   </section>
