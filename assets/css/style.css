@@ -135,3 +135,10 @@ ol {
 .hide {
   display: none !important;
 }
+
+/* remove hover state from mobile */
+@media(hover: hover) {
+  #btn:hover {
+      background-color: var(--hover-text-color);
+  }
+}
