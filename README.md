@@ -19,7 +19,8 @@ N/A
 ## Screenshot
 
 <a href="https://user-images.githubusercontent.com/98428608/212566630-9ba77197-39d7-4c76-ae28-f2b0098ad31a.png">Screenshot</a>
-         
+       
+<a href "https://user-images.githubusercontent.com/98428608/214601105-21c5027d-47fb-47a6-ae87-c8c5be24d851.png">Main Page</a>
 
 ## Deployment
 
