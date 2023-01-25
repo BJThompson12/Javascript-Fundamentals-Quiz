@@ -112,16 +112,16 @@ const navEl = document.getElementById('nav-score');
 let timerInterval;
 let highScore;
 
-let scoreEl = document.getElementById('high-score')
+let scoreEl = document.getElementById('high-score');
 
-const goBackEl = document.getElementById('go-back')
+const goBackEl = document.getElementById('go-back');
 goBackEl.addEventListener('click', reloadQuiz);
 // reload the quiz to retake
-function reloadQuiz (){
+function reloadQuiz() {
   location.reload();
 }
 const clearHighScoreEl = document.getElementById('clear-high-score-button');
-clearHighScoreEl.addEventListener('click', clearStorage)
+clearHighScoreEl.addEventListener('click', clearStorage);
 
 // add the listener to start quiz button to start function
 startButton.addEventListener('click', startQuiz);
@@ -139,7 +139,7 @@ let scoreSubmit = document.getElementById('submit-button');
 scoreSubmit.addEventListener('click', hiScorePage);
 var olEl = document.getElementById('score-list');
 
-function clearStorage(){
+function clearStorage() {
   localStorage.clear();
 }
 
@@ -151,7 +151,7 @@ function hiScorePage(event) {
   if (initialsEl !== '') {
     var highScoreArray =
       JSON.parse(window.localStorage.getItem('highScores')) || [];
-      
+
     let newScore = {
       score: highScore,
       initials: initialsEl,
@@ -162,11 +162,11 @@ function hiScorePage(event) {
     // when sending to local systme must stringify and then set it
     window.localStorage.setItem('highScores', JSON.stringify(highScoreArray));
   }
-  
+
   preQuizElement.classList.add('hide');
   finalScoreEl.classList.add('hide');
   highScoreEl.classList.remove('hide');
-  
+
   displayScore();
 }
 
@@ -219,7 +219,6 @@ function choiceClicked(event) {
     console.log(highScore);
   index++;
   if (index == questionBankLength - 1) {
-    
     testOver();
   }
 
@@ -239,19 +238,18 @@ function replaceInnerHTML(data) {
 
 let timeEl = document.getElementById('clock');
 let secondsLeft = 75;
-function setTime () {
+function setTime() {
   // Sets interval in variable
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
-  
-    if(secondsLeft <= 0) {
-      // Stops execution of action at set interval
-      
-      testOver();  
-  }
-  }, 1000);
 
+    if (secondsLeft <= 0) {
+      // Stops execution of action at set interval
+
+      testOver();
+    }
+  }, 1000);
 }
 
 function testOver() {
@@ -261,7 +259,7 @@ function testOver() {
   quizElement.classList.add('hide');
 }
 
-function returnToQuiz (){
+function returnToQuiz() {
   preQuizElement.classList.remove('hide');
   highScoreEl.classList.add('hide');
 }
