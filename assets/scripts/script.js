@@ -202,13 +202,14 @@ function choiceClicked(event) {
   if (event.target.innerHTML == questionBank[index].answer) {
     correctAnswerEl.classList.remove('hide');
     wrongAnswerEl.classList.add('hide');
+    highScore += 10; 
   } else {
     wrongAnswerEl.classList.remove('hide');
     correctAnswerEl.classList.add('hide');
+    secondsLeft = (secondsLeft - 10);
   }
-  if (event.target.innerHTML == questionBank[index].answer){
-    highScore += 10 
-  }
+  if (event.target.innerHTML == questionBank[index].answer)
+  
   // log the current score
   console.log(highScore);
   index++;
