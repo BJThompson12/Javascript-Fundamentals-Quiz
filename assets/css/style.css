@@ -52,8 +52,7 @@ h3 {
 }
 
 .button:hover {
-  background-color: var(--button-background);
-  
+  background-color: var(--button-background); 
 }
 
 .button:active {
